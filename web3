@@ -1,0 +1,12 @@
+f    val provider = Provider(HttpClient(rpc0))
+    File("D:\\code\\JavaCode\\DesktopGui\\test\\test.txt").bufferedReader().lines().toList()
+        .forEachIndexed { index, it ->
+            try {
+                val balance = provider.getBalance(Address(it), BlockId.LATEST).sendAwait().unwrap()
+                println("$index $it = $balance")
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+            Thread.sleep(1000L * Random().nextInt(10))
+        }
+}
